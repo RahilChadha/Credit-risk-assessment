@@ -1,5 +1,3 @@
-# Create the README.md content
-readme_content = """
 # Credit Risk Analysis Project
 
 ## Overview
