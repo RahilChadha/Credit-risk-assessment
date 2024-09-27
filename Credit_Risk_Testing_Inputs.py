@@ -1,7 +1,6 @@
 import warnings
 import joblib
 import pandas as pd
-from functions_file import column_scaler 
 from sklearn.preprocessing import StandardScaler
 
 # Load the pipeline (which includes preprocessing and model)
@@ -71,12 +70,17 @@ numeric_columns = ['person_age', 'person_income', 'person_emp_length', 'loan_amn
                                    'loan_percent_income', 'cb_person_cred_hist_length']
 # this function scales all numeric data except categorical data
 
+def column_scaler(dataframe, column_names):
+    scaler = StandardScaler()
+
+# Apply the scaler only to the numeric columns
+    dataframe[column_names] = scaler.fit_transform(dataframe[column_names])
+
+    return dataframe
+
 
 column_scaler(new_data, numeric_columns)
 
-# scaler = StandardScaler()
-# # Apply the scaler only to the numeric columns
-# new_data[numeric_columns] = scaler.fit_transform(new_data[numeric_columns])
 
 most_recent_row = new_data.tail(1)
 
