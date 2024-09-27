@@ -2,7 +2,12 @@
 
 ## Overview
 
-This project focuses on analyzing credit risk by exploring a dataset containing information on various loan applicants. The primary goal is to build and evaluate predictive models to classify whether a loan applicant will default or not. Given the imbalanced nature of the dataset (more non-defaults than defaults), the project also emphasizes techniques to handle such imbalances, like SMOTE (Synthetic Minority Over-sampling Technique).
+In the highly competitive credit card industry, financial institutions face the constant challenge of identifying potential defaulters. Extending credit to individuals who are likely to default on their payments can lead to significant financial losses and reputational damage. Credit card companies must carefully balance the risk of lending while ensuring they approve credit for deserving customers—those who are financially responsible and likely to make timely payments.
+
+However, misjudging a client's creditworthiness not only increases the risk of default but also denies credit to individuals who would otherwise manage their financial obligations effectively. This can harm customer relationships and reduce revenue opportunities. Therefore, accurately predicting whether a customer will default is crucial to maintaining a healthy balance sheet and fostering customer trust.
+
+We will develop a robust machine learning algorithm capable of accurately predicting customer defaults. By leveraging data-driven insights, the model will help financial institutions identify high-risk individuals before they are issued a credit card, thereby reducing the likelihood of defaults. This will allow credit card companies to mitigate risk while maximizing their portfolio of reliable customers, improving profitability and customer satisfaction.
+
 
 ## Table of Contents
 
@@ -21,10 +26,13 @@ This project focuses on analyzing credit risk by exploring a dataset containing 
 
 The project includes the following files and directories:
 
-- `credit-project.ipynb`: Jupyter notebook containing all the code and analysis.
+- `Credit_Risk_Assesment.ipynb`: Jupyter notebook containing the complete codebase and analysis for assessing credit risk.
+- `Credit_Risk_AI.ipynb`: Jupyter notebook integrating a language model AI to address your questions and concerns about the credit risk process.
+- `Credit_Risk_KPI.ipynb`:Jupyter notebook focused on data analysis, showcasing critical Key Performance Indicators (KPIs) related to credit card data.
+- `Credit_Risk_Test.ipynb`: A notebook where you can interactively test the developed model to predict whether a customer (or yourself) is likely to default.
 - `README.md`: Detailed description of the project.
-- `data/`: Directory to store datasets (not included in the repository for privacy reasons).
-- `models/`: Directory to save trained models.
+- `datasets`: Directory designated for storing datasets and associated pickle files.
+- `models/`: Directory for saving trained machine learning models.
 - `images/`: Directory to save plots and visualizations.
 
 ## Data Overview
