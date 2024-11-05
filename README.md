@@ -35,9 +35,13 @@ The project includes the following files and directories:
 - `models/`: Directory for saving trained machine learning models.
 - `images/`: Directory to save plots and visualizations.
 
+![alt text](image.png)
+
 ## Data Overview
 
-The dataset includes various features related to loan applicants, such as income, employment length, and loan status. The target variable is `loan_status`, where `0` indicates non-default (the applicant repaid the loan) and `1` indicates default (the applicant failed to repay the loan).
+The Credit Risk Dataset, sourced from Kaggle, is a publicly available dataset that simulates credit bureau data for analyzing credit risk. It includes features such as personal details (age, income, home ownership), loan specifics (intent, grade, amount, interest rate), and credit history information (default status, credit history length). 
+
+The target variable we will be picking is `loan_status`, where `0` indicates non-default (the applicant repaid the loan) and `1` indicates default (the applicant failed to repay the loan).
 
 ## Exploratory Data Analysis
 
