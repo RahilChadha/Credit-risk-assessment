@@ -35,8 +35,7 @@ The project includes the following files and directories:
 - `models/`: Directory for saving trained machine learning models.
 - `images/`: Directory to save plots and visualizations.
 
-![alt text](image.png)
-
+![alt text](<Screenshot 2024-11-05 at 2.59.54 PM.png>)
 ## Data Overview
 
 The Credit Risk Dataset, sourced from Kaggle, is a publicly available dataset that simulates credit bureau data for analyzing credit risk. It includes features such as personal details (age, income, home ownership), loan specifics (intent, grade, amount, interest rate), and credit history information (default status, credit history length). 
