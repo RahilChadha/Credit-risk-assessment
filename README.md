@@ -41,11 +41,13 @@ The project includes the following files and directories:
 
 The Credit Risk Dataset, sourced from Kaggle, is a publicly available dataset that simulates credit bureau data for analyzing credit risk. It includes features such as personal details (age, income, home ownership), loan specifics (intent, grade, amount, interest rate), and credit history information (default status, credit history length). 
 
-The target variable we will be picking is `loan_status`, where `0` indicates non-default (the applicant repaid the loan) and `1` indicates default (the applicant failed to repay the loan).
-
 ## Exploratory Data Analysis
 
-Initial data analysis focuses on understanding the distribution of key variables:
+The initial data analysis focuses on understanding the distribution of key variables through exploratory data analysis (EDA). I will examine the distribution of important variables, identify any missing values, and analyze correlations between variables to gain deeper insights into the dataset.
+
+<img src="image.png" alt="Correlation Heatmap" width="500" height="400">
+
+This heatmap illustrates the correlations between key variables in the dataset. Notable relationships include a positive correlation between loan_status and loan_int_rate, indicating that higher interest rates may be associated with default loans. Additionally, loan_percent_income and loan_amnt show a strong correlation, suggesting that larger loan amounts constitute a higher percentage of the applicant's income.
 
 - **Distribution of Loan Status**: A pie chart is used to visualize the proportion of defaults vs. non-defaults. The data is heavily imbalanced, with significantly more non-defaults.
 - **Box Plots**:
@@ -53,6 +55,8 @@ Initial data analysis focuses on understanding the distribution of key variables
   - `person_emp_length`: To analyze the length of employment of the applicants.
 
 ## Modeling and Evaluation
+
+The target variable we will be picking is `loan_status`, where `0` indicates non-default (the applicant repaid the loan) and `1` indicates default (the applicant failed to repay the loan).
 
 The project involves training multiple models to predict loan defaults, including:
 
