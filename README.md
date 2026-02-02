@@ -14,6 +14,7 @@ We will develop a robust machine learning algorithm capable of accurately predic
 - [Project Structure](#project-structure)
 - [Data Overview](#data-overview)
 - [Exploratory Data Analysis](#exploratory-data-analysis)
+- [Data Cleaning and Handling](#data-cleaning-and-handling)
 - [Modeling and Evaluation](#modeling-and-evaluation)
 - [Handling Imbalanced Data](#handling-imbalanced-data)
 - [ROC Curve Analysis](#roc-curve-analysis)
@@ -53,6 +54,8 @@ This heatmap illustrates the correlations between key variables in the dataset. 
 - **Box Plots**:
   - `person_income`: To understand the distribution of applicant income.
   - `person_emp_length`: To analyze the length of employment of the applicants.
+
+## Data Cleaning and Handling
 
 ## Modeling and Evaluation
 
