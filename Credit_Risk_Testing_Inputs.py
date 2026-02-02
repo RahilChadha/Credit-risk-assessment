@@ -2,6 +2,7 @@ import warnings
 import joblib
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
+import numpy as np
 
 # Load the pipeline (which includes preprocessing and model)
 pipeline = joblib.load('datasets/best_credit_score_model.pickle')
