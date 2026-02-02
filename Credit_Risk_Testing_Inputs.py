@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
 # Load the pipeline (which includes preprocessing and model)
-pipeline = joblib.load('best_credit_score_model.pickle')
+pipeline = joblib.load('datasets/best_credit_score_model.pickle')
 cleaned_unscaled_data = pd.read_csv("cleaned_unscaled_data.csv")
 
 warnings.filterwarnings("ignore")
