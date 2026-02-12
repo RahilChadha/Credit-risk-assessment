@@ -1,29 +1,85 @@
-# Credit Risk Analysis Project
+# Credit Risk Assessment – Machine Learning Project
 
-## Overview
+## Executive Summary
 
-In the highly competitive credit card industry, financial institutions face the constant challenge of identifying potential defaulters. Extending credit to individuals who are likely to default on their payments can lead to significant financial losses and reputational damage. Credit card companies must carefully balance the risk of lending while ensuring they approve credit for deserving customers—those who are financially responsible and likely to make timely payments.
+In the highly competitive lending industry, incorrectly identifying defaulters leads to significant financial losses, while rejecting reliable borrowers results in missed revenue opportunities. Financial institutions must strike a careful balance between risk mitigation and growth.
 
-However, misjudging a client's creditworthiness not only increases the risk of default but also denies credit to individuals who would otherwise manage their financial obligations effectively. This can harm customer relationships and reduce revenue opportunities. Therefore, accurately predicting whether a customer will default is crucial to maintaining a healthy balance sheet and fostering customer trust.
+This project develops a robust machine learning–based credit risk assessment system designed to:
 
-We will develop a robust machine learning algorithm capable of accurately predicting customer defaults. By leveraging data-driven insights, the model will help financial institutions identify high-risk individuals before they are issued a credit card, thereby reducing the likelihood of defaults. This will allow credit card companies to mitigate risk while maximizing their portfolio of reliable customers, improving profitability and customer satisfaction.
+- Accurately identify high-risk borrowers  
+- Prioritize recall to minimize costly false negatives  
+- Maintain acceptable precision to avoid excessive rejection of safe applicants  
+- Align model optimization directly with business risk objectives  
 
+The final solution leverages **XGBoost with Bayesian hyperparameter optimization**, achieving improved F-beta performance while handling severe class imbalance.
+
+---
 
 ## Table of Contents
 
+- [Business Context](#business-context)
 - [Project Structure](#project-structure)
 - [Data Overview](#data-overview)
 - [Exploratory Data Analysis](#exploratory-data-analysis)
-- [Data Cleaning and Handling](#data-cleaning-and-handling)
-- [Modeling and Evaluation](#modeling-and-evaluation)
+- [Data Cleaning & Feature Engineering](#data-cleaning--feature-engineering)
+- [Modeling & Evaluation](#modeling--evaluation)
 - [Handling Imbalanced Data](#handling-imbalanced-data)
-- [ROC Curve Analysis](#roc-curve-analysis)
+- [Hyperparameter Optimization](#hyperparameter-optimization)
+- [ROC & Performance Analysis](#roc--performance-analysis)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Business Impact](#business-impact)
+- [Future Improvements](#future-improvements)
 
-## Project Structure
+---
+
+# Business Context
+
+## The Problem
+
+Traditional credit risk assessment relies on:
+
+- Manual underwriting  
+- Fixed credit score cutoffs  
+- Income thresholds  
+- Rule-based systems  
+
+These approaches fail to capture:
+
+- Non-linear borrower behavior  
+- Complex feature interactions  
+- Evolving risk patterns  
+
+As a result, institutions either:
+
+- Approve risky borrowers (financial loss), or  
+- Reject reliable customers (lost revenue)
+
+---
+
+## Objective
+
+Predict loan status:
+
+- `0` → Non-default  
+- `1` → Default  
+
+**Business Priority:**  
+Missing a defaulter (False Negative) is more costly than incorrectly flagging a safe borrower.
+
+Therefore, the model was optimized using:
+
+- **F-beta score (β = 1.5)**  
+- Emphasis on Recall  
+- Balanced Precision  
+
+This reflects a real-world 70/30 tradeoff favoring recall.
+
+---
+
+# Project Structure
+
+
 
 The project includes the following files and directories:
 
@@ -38,53 +94,184 @@ The project includes the following files and directories:
 
 ![alt text](<Screenshot 2024-11-05 at 10.39.47 PM.png>)
 
-## Data Overview
 
-The Credit Risk Dataset, sourced from Kaggle, is a publicly available dataset that simulates credit bureau data for analyzing credit risk. It includes features such as personal details (age, income, home ownership), loan specifics (intent, grade, amount, interest rate), and credit history information (default status, credit history length). 
+📌 Insert image here:  
+`[PROJECT STRUCTURE SCREENSHOT]`
 
-## Exploratory Data Analysis
+---
 
-The initial data analysis focuses on understanding the distribution of key variables through exploratory data analysis (EDA). I will examine the distribution of important variables, identify any missing values, and analyze correlations between variables to gain deeper insights into the dataset.
+# Data Overview
 
-<img src="image.png" alt="Correlation Heatmap" width="500" height="400">
+Dataset Source: Kaggle (anonymized financial lending dataset)
 
-This heatmap illustrates the correlations between key variables in the dataset. Notable relationships include a positive correlation between loan_status and loan_int_rate, indicating that higher interest rates may be associated with default loans. Additionally, loan_percent_income and loan_amnt show a strong correlation, suggesting that larger loan amounts constitute a higher percentage of the applicant's income.
+Features include:
 
-- **Distribution of Loan Status**: A pie chart is used to visualize the proportion of defaults vs. non-defaults. The data is heavily imbalanced, with significantly more non-defaults.
-- **Box Plots**:
-  - `person_income`: To understand the distribution of applicant income.
-  - `person_emp_length`: To analyze the length of employment of the applicants.
+- Age  
+- Income  
+- Employment length  
+- Loan amount  
+- Loan interest rate  
+- Loan intent  
+- Loan grade  
+- Home ownership type  
+- Credit history length  
+- Historical default status  
 
-## Data Cleaning and Handling
+All personally identifiable information was removed.
 
-## Modeling and Evaluation
+---
 
-The target variable we will be picking is `loan_status`, where `0` indicates non-default (the applicant repaid the loan) and `1` indicates default (the applicant failed to repay the loan).
+# Exploratory Data Analysis
 
-The project involves training multiple models to predict loan defaults, including:
+  
+![Correlation Heatmap](images/.png)
 
-- Logistic Regression
-- Random Forest
-- Gradient Boosting
+The correlation matrix revealed:
 
-### Handling Imbalanced Data
+- Moderate correlations between loan amount and income percentage  
+- Positive relationship between interest rate and default risk  
+- No severe multicollinearity issues  
 
-Given the imbalance in the target variable, the project uses the following techniques:
+---
 
-- **SMOTE (Synthetic Minority Over-sampling Technique)**: To oversample the minority class and balance the dataset.
-- **Class Weighting**: Adjusting weights in the loss function to give more importance to the minority class.
+## Class Distribution
 
-A `GridSearchCV` is employed to optimize the `f1` score and find the best parameters for the models.
+  
+![Default vs Non-Default Distribution](class_distbn/.png)
 
-## ROC Curve Analysis
+Key Observation:
 
-To evaluate the performance of the models, ROC curves are plotted. The ROC curve provides a visual representation of the trade-off between the true positive rate (recall) and the false positive rate (1 - specificity). The AUC (Area Under the Curve) score is used as a metric to compare models.
+The dataset is heavily imbalanced, with significantly more non-defaulters than defaulters — a common real-world credit dataset challenge.
 
-## Installation
+---
 
-To run this project locally, follow these steps:
+# Data Cleaning & Feature Engineering
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/your-username/credit-risk-analysis.git
-   cd credit-risk-analysis
+## Missing Value Treatment
+
+- Employment length → Mean imputation  
+- Loan-type missing entries → Removed  
+- Duplicate records → Dropped  
+
+---
+
+## Outlier Handling
+
+Unrealistic values identified via box plots:
+
+- Age > 120 years  
+- Employment length > 120 years  
+
+These were treated as data-entry errors and replaced using mean values.
+
+---
+
+## Encoding Strategy
+
+- Label Encoding used for categorical variables:
+  - Loan intent  
+  - Loan grade  
+  - Home ownership  
+
+One-hot encoding was avoided to prevent dimensionality explosion.
+
+---
+
+## Feature Scaling
+
+All features were standardized to improve performance of:
+
+- Logistic Regression  
+- SVM  
+- KNN  
+
+---
+
+# Modeling & Evaluation
+
+## Train-Test Split
+
+- 75% Training  
+- 25% Testing  
+
+---
+
+## Models Evaluated
+
+- K-Nearest Neighbors  
+- Support Vector Machine  
+- Logistic Regression (L1 & L2)  
+- Decision Tree  
+- Random Forest  
+- Extra Trees  
+- LightGBM  
+- XGBoost  
+
+---
+
+# Handling Imbalanced Data
+
+Because defaulters are the minority class but most important for risk mitigation:
+
+Applied:
+
+- **SMOTE (Synthetic Minority Over-sampling Technique)**  
+- Class weighting  
+- F-beta scoring  
+
+SMOTE significantly improved minority class learning.
+
+---
+
+# Hyperparameter Optimization
+
+
+![MODEL COMPARISON + ROC CURVE IMAGE](roc.png)
+![TABLE](semifinal.png)
+
+Used:
+
+- `GridSearchCV` to optimize SMOTE ratio (Optimal: 0.66)  
+- `BayesSearchCV` (Bayesian Optimization) to tune XGBoost  
+
+Bayesian Optimization was selected because it:
+
+- Learns from previous trials  
+- Models performance probabilistically  
+- Finds optimal hyperparameters faster than brute-force search  
+
+Optimized Parameters:
+
+- Max depth: 14  
+- Learning rate: 0.26  
+- Estimators: 81  
+
+Result:
+
+- ~2% improvement in F-beta score  
+- Final F-beta ≈ 0.79  
+
+---
+
+# ROC & Performance Analysis
+
+
+![FINAL ROC CURVE IMAGE](final.png)
+
+Final Model Performance:
+
+- Accuracy: ~93%  
+- F-beta (β = 1.5): ~0.79  
+- Strong Recall (business priority)  
+- High ROC-AUC  
+
+The model successfully improves identification of high-risk borrowers while maintaining acceptable precision.
+
+---
+
+# Installation
+
+```bash
+git clone https://github.com/your-username/credit-risk-analysis.git
+cd credit-risk-analysis
+pip install -r requirements.txt
