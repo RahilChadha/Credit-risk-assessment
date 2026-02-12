@@ -95,8 +95,7 @@ The project includes the following files and directories:
 ![alt text](<Screenshot 2024-11-05 at 10.39.47 PM.png>)
 
 
-📌 Insert image here:  
-`[PROJECT STRUCTURE SCREENSHOT]`
+
 
 ---
 
@@ -124,7 +123,7 @@ All personally identifiable information was removed.
 # Exploratory Data Analysis
 
   
-![Correlation Heatmap](images/.png)
+![Correlation Heatmap](image.png)
 
 The correlation matrix revealed:
 
@@ -137,7 +136,7 @@ The correlation matrix revealed:
 ## Class Distribution
 
   
-![Default vs Non-Default Distribution](class_distbn/.png)
+![Default vs Non-Default Distribution](class_distbn.png)
 
 Key Observation:
 
