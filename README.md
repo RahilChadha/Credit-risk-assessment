@@ -92,7 +92,7 @@ The project includes the following files and directories:
 - `models/`: Directory for saving trained machine learning models.
 - `images/`: Directory to save plots and visualizations.
 
-![alt text](<Screenshot 2024-11-05 at 10.39.47 PM.png>)
+![alt text](<images/Screenshot 2024-11-05 at 10.39.47 PM.png>)
 
 
 
@@ -123,7 +123,7 @@ All personally identifiable information was removed.
 # Exploratory Data Analysis
 
   
-![Correlation Heatmap](image.png)
+![Correlation Heatmap](images/image.png)
 
 The correlation matrix revealed:
 
@@ -136,7 +136,7 @@ The correlation matrix revealed:
 ## Class Distribution
 
   
-![Default vs Non-Default Distribution](class_distbn.png)
+![Default vs Non-Default Distribution](images/class_distbn.png)
 
 Key Observation:
 
@@ -225,8 +225,8 @@ SMOTE significantly improved minority class learning.
 # Hyperparameter Optimization
 
 
-![MODEL COMPARISON + ROC CURVE IMAGE](roc.png)
-![TABLE](semifinal.png)
+![MODEL COMPARISON + ROC CURVE IMAGE](images/roc.png)
+![TABLE](images/semifinal.png)
 
 Used:
 
@@ -255,7 +255,7 @@ Result:
 # ROC & Performance Analysis
 
 
-![FINAL ROC CURVE IMAGE](final.png)
+![FINAL ROC CURVE IMAGE](images/final.png)
 
 Final Model Performance:
 
